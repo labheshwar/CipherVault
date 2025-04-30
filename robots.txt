@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.ciphervaultbylabheshwar.vercel.app/sitemap.xml
+
+# Allow search engines to index everything
+Disallow: 

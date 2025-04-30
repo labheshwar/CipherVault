@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherVault | SHA256 Encryption & Decryption Tool</title>
+    <meta name="description" content="A fast, secure and easy-to-use tool for SHA256 encryption and hash verification. Generate SHA256 hashes instantly with our minimalist web app.">
+    <meta name="keywords" content="SHA256, hash generator, encryption tool, hash verification, crypto tool, sha256 online, hash calculator">
+    <meta name="author" content="Labheshwar">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="CipherVault | SHA256 Encryption & Decryption Tool">
+    <meta property="og:description" content="Generate and verify SHA256 hashes instantly with this beautiful, minimalist web tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ciphervaultbylabheshwar.vercel.app">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CipherVault | SHA256 Encryption Tool">
+    <meta name="twitter:description" content="Generate and verify SHA256 hashes instantly with this beautiful, minimalist web tool.">
+    <link rel="canonical" href="https://www.ciphervaultbylabheshwar.vercel.app">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js" integrity="sha512-szJ5FSo9hEmXXe7b5AUVtn/WnL8a5VofnFeYC2i2z03uS2LhAch7ewNLbl5flsEmTTimMN0enBZg/3sQ+YOSzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CipherVault",
+      "url": "https://www.ciphervaultbylabheshwar.vercel.app",
+      "description": "A fast, secure and easy-to-use tool for SHA256 encryption and hash verification.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Labheshwar",
+        "url": "https://github.com/labheshwar"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header class="sr-only">
+        <h1>CipherVault - SHA256 Encryption and Verification Tool</h1>
+    </header>
+
+    <div class="theme-toggle" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-switch" aria-label="Switch between dark and light mode">
+        <label for="theme-switch" class="toggle-label">
+            <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </label>
+    </div>
+
+    <main class="container">
+        <div class="logo" aria-label="CipherVault Logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <h2>CipherVault</h2>
+        </div>
+        
+        <section class="card" aria-label="SHA256 Tool">
+            <nav class="tabs" aria-label="Tool options">
+                <button class="tab-btn active" data-tab="encrypt" aria-selected="true" role="tab">Encrypt</button>
+                <button class="tab-btn" data-tab="verify" aria-selected="false" role="tab">Verify</button>
+            </nav>
+            
+            <div class="tab-content active" id="encrypt-tab" role="tabpanel" aria-labelledby="encrypt">
+                <div class="input-group">
+                    <label for="text-input">Text to Encrypt</label>
+                    <textarea id="text-input" placeholder="Enter text to generate SHA256 hash..." aria-describedby="encryption-description"></textarea>
+                    <p id="encryption-description" class="sr-only">As you type text here, a SHA256 hash will be generated automatically below</p>
+                </div>
+                
+                <div class="result-container">
+                    <div class="input-group">
+                        <label for="hash-output">SHA256 Hash</label>
+                        <div class="result-wrapper">
+                            <input type="text" id="hash-output" readonly aria-live="polite">
+                            <button id="copy-btn" class="icon-btn" title="Copy to clipboard" aria-label="Copy hash to clipboard">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="verify-tab" role="tabpanel" aria-labelledby="verify">
+                <div class="input-group">
+                    <label for="verify-text">Original Text</label>
+                    <textarea id="verify-text" placeholder="Enter original text..." aria-describedby="verification-description"></textarea>
+                    <p id="verification-description" class="sr-only">Enter the original text that you want to verify against a SHA256 hash</p>
+                </div>
+                
+                <div class="input-group">
+                    <label for="verify-hash">SHA256 Hash to Verify</label>
+                    <input type="text" id="verify-hash" placeholder="Enter hash to verify against...">
+                </div>
+                
+                <div class="verification-result" aria-live="polite">
+                    <div id="result-indicator" role="status"></div>
+                    <p id="verification-message"></p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Fast & secure SHA256 encryption - No data is sent to servers</p>
+            <p class="copyright">Made with <span class="heart">❤</span> by <a href="https://github.com/labheshwar" target="_blank" rel="noopener noreferrer">Labheshwar</a></p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 
