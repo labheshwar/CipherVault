@@ -114,7 +114,7 @@ verifyHash.addEventListener('input', updateVerification);
 
 const prefillExample = () => {
     const exampleHash = "7e546bf90d17ba9bef60d1f713ae227df40039b1cd0fee7aef0d33e9d6c41755";
-    const exampleText = "Hammad2@123";
+    const exampleText = "Password@123";
     
     verifyHash.value = exampleHash;
     verifyText.value = exampleText;
